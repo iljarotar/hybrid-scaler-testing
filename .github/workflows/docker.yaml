@@ -14,6 +14,8 @@ jobs:
   build:
     name: Docker Build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
     - name: Log in to the container registry
