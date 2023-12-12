@@ -15,7 +15,7 @@ spec:
       memory: 80
     minAllowed:
       cpu: 100m
-      memory: 1Mi
+      memory: 4Mi
     maxAllowed:
       cpu: 2
       memory: 256Mi
