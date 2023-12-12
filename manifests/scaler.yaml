@@ -1,0 +1,31 @@
+apiVersion: scaling.autoscaling.custom/v1
+kind: HybridScaler
+metadata:
+  name: hybridscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: php-apache
+  minReplicas: 1
+  maxReplicas: 10
+  resourcePolicy:
+    targetUtilization:
+      cpu: 50
+      memory: 80
+    minAllowed:
+      cpu: 100m
+      memory: 1Mi
+    maxAllowed:
+      cpu: 2
+      memory: 256Mi
+    limitsToRequestsRatioCPU: 2
+    limitsToRequestsRatioMemory: 2
+  learningType: qLearning
+  interval: 15
+  qLearningParams:
+    learningRate: 100m
+    discountFactor: 500m
+    cpuCost: 1G
+    memoryCost: 1
+    underprovisioningPenalty: 2
