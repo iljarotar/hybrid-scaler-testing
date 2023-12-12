@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: locust
+  IMAGE_NAME: ${{ github.repository }}
   TAG: latest
 
 jobs:
