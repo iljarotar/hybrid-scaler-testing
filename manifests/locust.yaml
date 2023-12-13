@@ -8,7 +8,7 @@ spec:
       containers:
       - name: locust
         image: ghcr.io/iljarotar/hybrid-scaler-testing:latest
-        command: ["./run.sh", "http://scalesserver:8080"]
+        command: ["./run.sh"]
         resources:
           limits:
             cpu: 1
