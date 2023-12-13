@@ -17,14 +17,13 @@ spec:
         image: ghcr.io/iljarotar/scalesserver:latest
         ports:
         - containerPort: 8080
-          name: http
         resources:
           limits:
             cpu: 200m
-            memory: 12Mi
+            memory: 128Mi
           requests:
             cpu: 100m
-            memory: 6Mi
+            memory: 64Mi
 ---
 apiVersion: v1
 kind: Service
@@ -34,7 +33,6 @@ metadata:
     run: scalesserver
 spec:
   ports:
-  - port: 3000
-    targetPort: http
+  - port: 8080
   selector:
     run: scalesserver
