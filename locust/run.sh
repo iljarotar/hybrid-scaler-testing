@@ -1,5 +1,11 @@
 #! /bin/bash
 
-echo "starting locust"
+host=$1
 
-locust --headless --users 10 --spawn-rate 1 -H $1 -t 60s
+if [ -z "$host" ]; then
+  host="http://scalesserver.app.svc.cluster.local:8080"
+fi
+
+echo "starting locust at $host"
+
+locust --headless --users 10 --spawn-rate 1 -H $host -t 60s

@@ -9,11 +9,11 @@ spec:
       - name: locust
         image: ghcr.io/iljarotar/hybrid-scaler-testing:latest
         command: ["./run.sh"]
+        resources:
+          limits:
+            cpu: 1
+          requests:
+            cpu: 100m
       restartPolicy: Never
-      resources:
-        limits:
-          cpu: 1
-        requests:
-          cpu: 100m
   backoffLimit: 4
 
