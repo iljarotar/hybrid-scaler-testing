@@ -3,7 +3,7 @@
 host=$1
 
 if [ -z "$host" ]; then
-  host="http://scalesserver.app.svc.cluster.local:8080"
+  host="http://localhost:8080"
 fi
 
 echo "starting locust at $host"

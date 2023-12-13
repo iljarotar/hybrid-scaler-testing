@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalesserver
+spec:
+  selector:
+    matchLabels:
+      run: scalesserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: scalesserver
+    spec:
+      containers:
+      - name: scalesserver
+        image: ghcr.io/iljarotar/scalesserver:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scalesserver
+  labels:
+    run: scalesserver
+spec:
+  ports:
+  - port: 8080
+  selector:
+    run: scalesserver
