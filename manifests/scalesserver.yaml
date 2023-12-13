@@ -6,6 +6,7 @@ spec:
   selector:
     matchLabels:
       run: scalesserver
+  replicas: 1
   template:
     metadata:
       labels:
@@ -23,7 +24,7 @@ spec:
             memory: 12Mi
           requests:
             cpu: 100m
-            memory: 2Mi
+            memory: 6Mi
 ---
 apiVersion: v1
 kind: Service
