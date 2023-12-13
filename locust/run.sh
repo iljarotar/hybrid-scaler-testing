@@ -8,4 +8,4 @@ fi
 
 echo "starting locust at $host"
 
-locust --headless --users 10 --spawn-rate 1 -H $host -t 60s
+locust --headless --users 10 --spawn-rate 1 -H $host -t 10s
