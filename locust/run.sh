@@ -2,4 +2,4 @@
 
 echo "starting locust"
 
-locust --headless --users 10 --spawn-rate 1 -H http://localhost:8080 -t 60s
+locust --headless --users 10 --spawn-rate 1 -H $1 -t 60s
