@@ -4,7 +4,8 @@ metadata:
   name: locust
 spec:
   schedule: "0 0,6,12,18 * * *"
-  ttlSecondsAfterFinished: 3600
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 10
   jobTemplate:
     spec:
       template:
