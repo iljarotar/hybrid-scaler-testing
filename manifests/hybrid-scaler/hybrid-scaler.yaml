@@ -26,6 +26,7 @@ spec:
   qLearningParams:
     learningRate: 100m
     discountFactor: 500m
+    epsilon: 100m
     cpuCost: 4G
     memoryCost: 1
     underprovisioningPenalty: 2
