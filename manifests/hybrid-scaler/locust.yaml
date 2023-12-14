@@ -1,19 +1,20 @@
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
   name: locust
 spec:
-  template:
+  schedule: "0 3,9,15,21 * * *"
+  ttlSecondsAfterFinished: 3600
+  jobTemplate:
     spec:
-      containers:
-      - name: locust
-        image: ghcr.io/iljarotar/hybrid-scaler-testing:latest
-        command: ["./run.sh", "http://scalesserver:8080"]
-        resources:
-          limits:
-            cpu: 1
-          requests:
-            cpu: 100m
-      restartPolicy: Never
-  backoffLimit: 4
+      template:
+        spec:
+          containers:
+          - name: locust
+            image: ghcr.io/iljarotar/hybrid-scaler-testing:latest
+            imagePullPolicy: Always
+            command:
+            - ./run.sh
+            - http://scalesserver:8080
+          restartPolicy: OnFailure
 
