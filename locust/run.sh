@@ -8,4 +8,6 @@ fi
 
 echo "starting locust at $host"
 
-locust --headless --users 10 --spawn-rate 1 -H $host -t 10s
+locust --headless -H $host -f locustfile.py,irregular_load.py HeavyUser IrregularUser
+locust --headless -H $host -f locustfile.py,high_load.py
+locust --headless -H $host -f locustfile.py,steady_load.py LightSteadyUser MixedUser
