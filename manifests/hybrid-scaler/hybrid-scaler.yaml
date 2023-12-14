@@ -15,10 +15,10 @@ spec:
       memory: 50
     minAllowed:
       cpu: 100m
-      memory: 4Mi
+      memory: 8Mi
     maxAllowed:
       cpu: 2
-      memory: 256Mi
+      memory: 1Gi
     limitsToRequestsRatioCPU: 2
     limitsToRequestsRatioMemory: 2
   learningType: qLearning
@@ -26,6 +26,6 @@ spec:
   qLearningParams:
     learningRate: 100m
     discountFactor: 500m
-    cpuCost: 1G
+    cpuCost: 4G
     memoryCost: 1
     underprovisioningPenalty: 2

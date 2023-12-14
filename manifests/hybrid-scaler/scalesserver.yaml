@@ -15,6 +15,11 @@ spec:
       containers:
       - name: scalesserver
         image: ghcr.io/iljarotar/scalesserver:latest
+        command:
+          - /scalesserver
+        args:
+          - --max-range=16
+          - --max-num=16
         ports:
         - containerPort: 8080
         resources:
