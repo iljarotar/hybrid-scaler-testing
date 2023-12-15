@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: locust
+spec:
+  ttlSecondsAfterFinished: 1800
+  template:
+    spec:
+      containers:
+      - name: locust
+        image: ghcr.io/iljarotar/hybrid-scaler-testing:latest
+        imagePullPolicy: Always
+        command:
+        - ./run.sh
+        - http://scalesserver:8080
+      restartPolicy: OnFailure
+
