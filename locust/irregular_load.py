@@ -2,7 +2,7 @@ from locust import LoadTestShape
 
 class IrregularLoadShape(LoadTestShape):
     duration = 3600
-    users = 10
+    users = 50
 
     def tick(self):
         run_time = self.get_run_time()

@@ -3,7 +3,7 @@ import math
 
 class SteadyLoadShape(LoadTestShape):
     duration = 4800
-    users = 50
+    users = 200
     spawn_rate = 0.5
 
     def tick(self):
