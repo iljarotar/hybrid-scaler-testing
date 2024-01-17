@@ -3,8 +3,8 @@ import math
 
 class CombinedLoadShape(LoadTestShape):
     irregular_load_duration = 1200
-    high_load_duration = 1200
-    steady_load_duration = 1200
+    high_load_duration = 600
+    steady_load_duration = 400
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
     high_load_spawn_rate = 0.7

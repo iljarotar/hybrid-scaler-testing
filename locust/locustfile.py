@@ -1,7 +1,7 @@
 from locust import HttpUser, task, between, constant_pacing, constant
 
 class User(HttpUser):
-    wait_time = constant_pacing(1)
+    wait_time = between(0.5,5)
 
     @task
     def twelve_one(self):
