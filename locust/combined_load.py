@@ -3,17 +3,17 @@ import math
 
 class CombinedLoadShape(LoadTestShape):
     irregular_load_duration = 600
-    high_load_duration = 600
-    steady_load_duration = 600
+    high_load_duration = 300
+    steady_load_duration = 300
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
-    high_load_spawn_rate = 2
+    high_load_spawn_rate = 4
     high_load_users = 500
-    steady_load_spawn_rate = 1
+    steady_load_spawn_rate = 2
     steady_load_users = 200
 
     irregular_users_numbers = [
-        275, 56, 204, 24, 90, 1,
+        275, 24, 204, 67, 150, 1,
     ]
 
     def tick(self):
