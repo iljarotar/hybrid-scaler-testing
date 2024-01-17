@@ -7,10 +7,10 @@ class CombinedLoadShape(LoadTestShape):
     steady_load_duration = 600
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
-    high_load_spawn_rate = 0.7
-    high_load_users = 300
-    steady_load_spawn_rate = 0.5
-    steady_load_users = 100
+    high_load_spawn_rate = 2
+    high_load_users = 500
+    steady_load_spawn_rate = 1
+    steady_load_users = 200
 
     irregular_users_numbers = [
         275, 56, 204, 24, 90, 1,
