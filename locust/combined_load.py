@@ -2,12 +2,12 @@ from locust import LoadTestShape
 import math
 
 class CombinedLoadShape(LoadTestShape):
-    irregular_load_duration = 3600
-    high_load_duration = 2400
-    steady_load_duration = 4800
+    irregular_load_duration = 1200
+    high_load_duration = 1200
+    steady_load_duration = 1200
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
-    high_load_spawn_rate = 0.1
+    high_load_spawn_rate = 0.3
     high_load_users = 300
     steady_load_spawn_rate = 0.5
     steady_load_users = 100
@@ -31,19 +31,21 @@ class CombinedLoadShape(LoadTestShape):
             index = math.floor(run_time/self.irregular_load_duration * len(self.irregular_users_numbers))
             return (self.irregular_users_numbers[index], self.irregular_users_numbers[index])
 
-        if run_time <= high_load_duration:       
-            if (run_time - self.irregular_load_duration) <= self.high_load_duration / 2:
-                users = math.floor((run_time - self.irregular_load_duration) * self.high_load_spawn_rate)
+        checkpoint = self.irregular_load_duration
+
+        if (run_time - checkpoint) <= self.high_load_duration:
+            if (run_time - checkpoint) <= self.high_load_duration / 2:
+                users = math.floor((run_time - checkpoint) * self.high_load_spawn_rate)
                 return (min(users, self.high_load_users), self.high_load_spawn_rate)
 
-            remaining_time = self.high_load_duration - (run_time - self.irregular_load_duration)
+            remaining_time = self.high_load_duration - (run_time - checkpoint)
             users = math.floor(remaining_time * self.high_load_spawn_rate)
             return (min(users, self.high_load_users), self.high_load_spawn_rate)
 
-        check_point = self.irregular_load_duration + self.high_load_duration
+        checkpoint = self.irregular_load_duration + self.high_load_duration
         
-        if (run_time - check_point) <= self.steady_load_duration / 2:
-            users = math.floor((run_time - check_point) * self.steady_load_spawn_rate)
+        if (run_time - checkpoint) <= self.steady_load_duration / 2:
+            users = math.floor((run_time - checkpoint) * self.steady_load_spawn_rate)
             return (min(users, self.steady_load_users), self.steady_load_spawn_rate)
 
         remaining_time = self.duration - run_time
