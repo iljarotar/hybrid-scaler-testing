@@ -13,12 +13,7 @@ class CombinedLoadShape(LoadTestShape):
     steady_load_users = 100
 
     irregular_users_numbers = [
-        10, 90, 24, 75, 38, 99, 14,
-        46, 62, 23, 71, 12, 76, 53,
-        19, 94, 64, 72, 23, 86, 16,
-        85, 34, 26, 23, 95, 12, 43,
-        90, 54, 23, 81, 45, 23, 91,
-        74, 29, 56, 74, 100, 8, 34
+        5, 90, 24, 204, 56, 275,
     ]
 
     def tick(self):
