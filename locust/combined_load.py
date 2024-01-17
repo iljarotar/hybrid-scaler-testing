@@ -7,7 +7,7 @@ class CombinedLoadShape(LoadTestShape):
     steady_load_duration = 1200
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
-    high_load_spawn_rate = 0.3
+    high_load_spawn_rate = 0.7
     high_load_users = 300
     steady_load_spawn_rate = 0.5
     steady_load_users = 100
@@ -31,21 +31,21 @@ class CombinedLoadShape(LoadTestShape):
             index = math.floor(run_time/self.irregular_load_duration * len(self.irregular_users_numbers))
             return (self.irregular_users_numbers[index], self.irregular_users_numbers[index])
 
-        checkpoint = self.irregular_load_duration
+        high_load_run_time = run_time - self.irregular_load_duration
 
-        if (run_time - checkpoint) <= self.high_load_duration:
-            if (run_time - checkpoint) <= self.high_load_duration / 2:
-                users = math.floor((run_time - checkpoint) * self.high_load_spawn_rate)
+        if high_load_run_time <= self.high_load_duration:
+            if high_load_run_time <= self.high_load_duration / 2:
+                users = math.floor(high_load_run_time * self.high_load_spawn_rate)
                 return (min(users, self.high_load_users), self.high_load_spawn_rate)
 
-            remaining_time = self.high_load_duration - (run_time - checkpoint)
+            remaining_time = self.high_load_duration - high_load_run_time
             users = math.floor(remaining_time * self.high_load_spawn_rate)
             return (min(users, self.high_load_users), self.high_load_spawn_rate)
 
-        checkpoint = self.irregular_load_duration + self.high_load_duration
+        steady_load_run_time = run_time - (self.irregular_load_duration + self.high_load_duration)
         
-        if (run_time - checkpoint) <= self.steady_load_duration / 2:
-            users = math.floor((run_time - checkpoint) * self.steady_load_spawn_rate)
+        if steady_load_run_time <= self.steady_load_duration / 2:
+            users = math.floor(steady_load_run_time * self.steady_load_spawn_rate)
             return (min(users, self.steady_load_users), self.steady_load_spawn_rate)
 
         remaining_time = self.duration - run_time
