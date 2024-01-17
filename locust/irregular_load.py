@@ -1,5 +1,4 @@
 from locust import LoadTestShape
-import random
 import math
 
 class IrregularLoadShape(LoadTestShape):
