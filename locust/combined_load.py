@@ -2,14 +2,14 @@ from locust import LoadTestShape
 import math
 
 class CombinedLoadShape(LoadTestShape):
-    irregular_load_duration = 600
-    high_load_duration = 300
-    steady_load_duration = 300
+    irregular_load_duration = 2400
+    high_load_duration = 2400
+    steady_load_duration = 2400
     duration = irregular_load_duration + high_load_duration + steady_load_duration
 
-    high_load_spawn_rate = 8
+    high_load_spawn_rate = 2
     high_load_users = 1000
-    steady_load_spawn_rate = 4
+    steady_load_spawn_rate = 1
     steady_load_users = 600
 
     irregular_users_numbers = [
