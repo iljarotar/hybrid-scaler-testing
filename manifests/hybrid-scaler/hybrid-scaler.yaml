@@ -19,8 +19,8 @@ spec:
     maxAllowed:
       cpu: 2
       memory: 1Gi
-    limitsToRequestsRatioCPU: 2
-    limitsToRequestsRatioMemory: 2
+    limitsToRequestsRatioCPU: 10
+    limitsToRequestsRatioMemory: 16
   learningType: qLearning
   interval: 15
   qLearningParams:
